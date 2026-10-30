@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+   <script>
+    (() => {
+      try {
+        const t = localStorage.getItem("site-theme") || sessionStorage.getItem("site-theme-session");
+        document.documentElement.dataset.theme = (t === "light" || t === "dark") ? t : "dark";
+      } catch(_) { document.documentElement.dataset.theme = "dark"; }
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apa yang Sebenarnya Terjadi? | Tim Doa Ibu</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2312291f'/%3E%3Cpath d='M8 22 16 8l8 14' fill='none' stroke='%23ff8a3d' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="../main/style/theme.css?v=9">
+  <link rel="stylesheet" href="./style/style.css?v=9">
+</head>
+<body>
+  <nav class="site-nav" aria-label="Navigasi utama">
+    <div class="site-nav-inner">
+      <span class="site-nav-brand">Tim Doa Ibu</span>
+      <div class="site-nav-links">
+        <a class="site-nav-link" href="../index.html">Beranda</a>
+        <a class="site-nav-link is-active" href="./" aria-current="page">Karhutla</a>
+        <a class="site-nav-link" href="../gunung-berapi/">Gunung Berapi</a>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <section id="map-section" class="map-section">
+      <div id="map-container" class="map-container"></div>
+    </section>
+
+    <div class="page-container">
+      <section id="highlight-section" class="highlight-section">
+        <h2>Apa yang Sebenarnya Terjadi?</h2>
+        <p>Peta di atas menampilkan titik panas yang terdeteksi di seluruh Indonesia. Di balik setiap titiknya ada saudara kita yang sedang menghadapi karhutla, dan kami ingin mengajak kalian melihatnya lebih dekat.</p>
+        <p>Kami membuat website ini bukan hanya untuk menyampaikan bahaya dan dampak yang mengancam kesehatan saudara kita yang masih berusaha bertahan di daerah yang sedang dilanda karhutla, tetapi juga mengajak kita bersyukur atas keselamatan yang Tuhan berikan dan mendoakan yang terbaik bagi mereka di sana.</p>
+      </section>
+
+      <section id="information-section">
+        <header class="section-header">
+          <h2>Kenapa Indonesia?</h2>
+        </header>
+
+        <div class="editorial-articles">
+            <article class="editorial-article">
+              <header class="article-heading">
+                <span class="article-number">Bab 1 Membaca Peta</span>
+                <h3>Bagaimana Cara Membaca Peta Ini?</h3>
+              </header>
+              <div class="article-content">
+                <p>Sebelum membahas penyebab dan dampaknya, kita mulai dari hal yang paling dekat, yaitu peta di atas dan cara membacanya. Titik panas atau hotspot adalah tanda dari satelit bahwa suhu di suatu lokasi tampak tidak biasa. Deteksi ini berguna untuk membantu pemantauan wilayah yang berpotensi mengalami kebakaran, tetapi tidak selalu berarti kebakaran telah dipastikan terjadi. Hasil pengamatan dapat dipengaruhi oleh waktu pengambilan citra, tutupan awan, karakteristik permukaan, dan kemampuan sensor, sehingga hotspot perlu dipahami sebagai indikator untuk ditindaklanjuti.</p>
+                <p>Jumlah hotspot, luas area terbakar, jumlah warga terdampak, dan kualitas udara menggambarkan hal yang berbeda. Banyaknya hotspot tidak dapat langsung diartikan sebagai luas kebakaran atau tingkat kerusakan. Data pada peta harus dibaca sesuai periode pengamatan dan wilayahnya. Jika suatu provinsi memiliki nilai nol, itu berarti tidak ada deteksi yang tercatat dalam dataset pada periode tersebut, bukan jaminan bahwa wilayah itu bebas dari kebakaran.</p>
+              </div>
+            </article>
+            <article class="editorial-article editorial-article--reverse">
+              <header class="article-heading">
+                <span class="article-number">Bab 1 Membaca Peta</span>
+                <h3>Daerah Mana yang Merasakan Dampaknya?</h3>
+              </header>
+              <div class="article-content">
+                <p>Dampak karhutla sering kali tidak berhenti di lokasi api pertama kali menyala. Sebagian wilayah mengalami kebakaran secara langsung, sedangkan wilayah lain dapat terdampak asap, penurunan kualitas udara, gangguan perjalanan, atau perubahan aktivitas masyarakat. Dampak yang dirasakan setiap daerah bergantung pada jarak dari kebakaran, arah angin, kondisi cuaca, serta kepadatan penduduk dan kegiatan di sekitarnya.</p>
+                <p>Peta ini membantu melihat persebaran deteksi hotspot pada tingkat provinsi agar pengunjung lebih mudah mengenali pola wilayah yang perlu diperhatikan. Warna provinsi merupakan ringkasan data pada periode tertentu, bukan berarti seluruh daerah di dalam provinsi tersebut terbakar. Untuk memahami kondisi dengan lebih tepat, jumlah hotspot perlu dibedakan dari luas lahan terbakar, jumlah kejadian yang telah dikonfirmasi, dan wilayah yang terdampak asap.</p>
+              </div>
+            </article>
+            <article class="editorial-article">
+              <header class="article-heading">
+                <span class="article-number">Bab 1 Membaca Peta</span>
+                <h3>Ke Mana Asapnya Pergi?</h3>
+              </header>
+              <div class="article-content">
+                <p>Asap karhutla bergerak mengikuti arah dan kecepatan angin, sehingga daerah yang jauh dari sumber kebakaran pun bisa mengalami penurunan kualitas udara. Sebaran asap dipengaruhi oleh lokasi serta besarnya kebakaran, kondisi atmosfer, hujan, dan pola angin pada waktu tertentu. Karena itu, keberadaan asap di suatu kota tidak selalu menunjukkan bahwa kebakaran sedang berlangsung di dalam kota tersebut.</p>
+                <p>Kualitas udara dapat berubah sepanjang hari, tergantung pada jumlah polutan dan kondisi atmosfer. PM2.5 merupakan salah satu indikator yang digunakan untuk memahami pencemaran oleh partikel halus. Informasi kualitas udara membantu masyarakat menilai kapan paparan perlu dikurangi dan aktivitas luar ruangan perlu disesuaikan. Nilainya tetap perlu dibaca berdasarkan lokasi dan waktu pengukuran karena kondisi di dua daerah yang berdekatan pun belum tentu sama.</p>
+              </div>
+            </article>
+            <article class="editorial-article editorial-article--reverse">
+              <header class="article-heading">
+                <span class="article-number">Bab 2 Asap dan Tubuh Kita</span>
+                <h3>Apa yang Asap Lakukan pada Tubuh Kita?</h3>
+              </header>
+              <div class="article-content">
+                <p>Setelah tahu ke mana asap menyebar, sekarang kita lihat bagian yang paling dekat dengan diri kita, yaitu kesehatan. Asap karhutla berisi campuran partikel dan gas yang bisa mengganggu kesehatan. Partikel halus seperti PM2.5 menjadi perhatian karena ukurannya sangat kecil dan dapat masuk jauh ke dalam saluran pernapasan. Paparan asap dapat menyebabkan iritasi mata, batuk, sakit tenggorokan, atau sesak napas. Pada orang yang memiliki penyakit paru atau jantung, kondisi udara yang buruk juga dapat memperparah keluhan yang sudah ada.</p>
+                <p>Risiko paparan tidak sama bagi semua orang. Anak-anak, lansia, ibu hamil, serta orang dengan kondisi kesehatan tertentu perlu mendapat perhatian lebih, begitu pula pekerja yang harus beraktivitas di luar ruangan. Dampak kesehatan dipengaruhi oleh tingkat pencemaran, lama paparan, dan kondisi individu. Karena itu, informasi kualitas udara berguna untuk membantu masyarakat menyesuaikan aktivitas, melindungi kelompok rentan, dan mencari pertolongan medis ketika mengalami gejala serius.</p>
+              </div>
+            </article>
+            <article class="editorial-article">
+              <header class="article-heading">
+                <span class="article-number">Bab 2 Asap dan Tubuh Kita</span>
+                <h3>Apa yang Sebaiknya Kita Lakukan Saat Asap Datang?</h3>
+              </header>
+              <div class="article-content">
+                <p>Saat asap mulai terasa di suatu wilayah, sebaiknya kita memperhatikan informasi kualitas udara dan arahan petugas setempat. Jika udara memburuk, kurangi aktivitas di luar ruangan, terutama kegiatan fisik berat. Usahakan berada di ruangan dengan udara yang lebih bersih, tutup celah masuk asap bila memungkinkan, dan hindari menambah pencemaran di dalam rumah melalui pembakaran sampah atau bahan lainnya.</p>
+                <p>Anak-anak, lansia, ibu hamil, serta orang dengan gangguan pernapasan atau penyakit jantung perlu mendapat perhatian khusus. Perlindungan pernapasan perlu disesuaikan dengan kondisi dan petunjuk kesehatan, karena tidak semua jenis masker memberikan perlindungan yang sama terhadap partikel asap. Jika muncul sesak napas, nyeri dada, atau gejala serius lainnya, segera cari pertolongan medis dan ikuti arahan layanan kesehatan.</p>
+              </div>
+            </article>
+            <article class="editorial-article editorial-article--reverse">
+              <header class="article-heading">
+                <span class="article-number">Bab 2 Asap dan Tubuh Kita</span>
+                <h3>Seperti Apa Keadaan di Lapangan?</h3>
+              </header>
+              <div class="article-content">
+                <p>Warga yang tinggal di sekitar lokasi kebakaran bisa menghadapi asap, jarak pandang yang berkurang, aktivitas yang terganggu, dan rasa khawatir terhadap keselamatan keluarga. Kondisi tersebut bisa berbeda dari satu tempat ke tempat lain. Ada wilayah yang menghadapi api secara langsung, sementara wilayah lain lebih merasakan dampak asap atau harus menyesuaikan kegiatan sehari-hari akibat kualitas udara yang memburuk.</p>
+                <p>Petugas pemadam dan tim penanganan juga dapat menghadapi medan yang sulit dijangkau, sumber air terbatas, perubahan arah angin, atau bara yang masih bertahan setelah api terlihat padam. Gambaran kondisi lapangan perlu mempertimbangkan perkembangan kejadian dari waktu ke waktu. Informasi yang lengkap membantu pengunjung memahami bahwa penanganan karhutla tidak hanya berfokus pada api, tetapi juga pada keselamatan warga, kebutuhan petugas, dan pemulihan setelah kejadian.</p>
+              </div>
+            </article>
+            <article class="editorial-article">
+              <header class="article-heading">
+                <span class="article-number">Bab 3 Dari Mana Api Bermula</span>
+                <h3>Bagaimana Kondisi Alam Memengaruhi Api?</h3>
+              </header>
+              <div class="article-content">
+                <p>Kita sudah melihat dampaknya di peta dan di tubuh kita. Sekarang mari mundur sedikit dan melihat dari mana api itu bermula. Alam Indonesia sangat beragam, mulai dari hutan hujan tropis yang lembap, hutan musim, lahan gambut, padang rumput, semak belukar, hingga kawasan pertanian dan perkebunan. Setiap jenis lingkungan memiliki karakteristik vegetasi, tanah, kelembapan, dan pola musim yang berbeda. Saat hujan berkurang dalam waktu cukup lama, rumput, daun kering, ranting, dan bahan organik di permukaan tanah dapat mengering sehingga lebih mudah terbakar ketika terkena sumber api.</p>
+                <p>Karhutla tidak hanya terjadi di lahan gambut. Pada tanah mineral, api juga dapat menyebar melalui rumput, semak, sisa tanaman, serasah hutan, atau vegetasi kering lainnya. Perbedaan utamanya adalah cara api bertahan dan merambat. Pada gambut yang mengering, api dapat menjalar ke lapisan organik di bawah permukaan sehingga sulit terlihat dan dipadamkan. Di wilayah non-gambut, kebakaran permukaan tetap dapat meluas ketika bahan bakar kering dan angin mendukung. Asapnya pun bisa terbawa angin ke daerah lain, termasuk wilayah yang tidak memiliki lahan gambut dan tidak mengalami kebakaran secara langsung.</p>
+              </div>
+            </article>
+            <article class="editorial-article editorial-article--reverse">
+              <header class="article-heading">
+                <span class="article-number">Bab 3 Dari Mana Api Bermula</span>
+                <h3>Dari Mana Api Itu Bermula?</h3>
+              </header>
+              <div class="article-content">
+                <p>Kebakaran hutan dan lahan bisa bermula dari aktivitas manusia, misalnya membuka lahan dengan cara membakar, pembakaran sampah yang merambat ke vegetasi, atau api yang ditinggalkan tanpa pengawasan. Sebagian besar kebakaran membutuhkan sumber penyulut, sedangkan cuaca kering, angin, dan banyaknya bahan yang mudah terbakar dapat membuat api lebih cepat menyebar dan sulit dikendalikan.</p>
+                <p>Kondisi Indonesia yang memiliki musim kemarau, kawasan hutan yang luas, lahan pertanian, semak, alang-alang, serta lahan gambut di sejumlah wilayah membuat risiko kebakaran berbeda-beda antardaerah. Karena itu, karhutla tidak dapat dijelaskan hanya dengan satu penyebab. Sumber api, keadaan vegetasi, pengelolaan lahan, curah hujan, dan kondisi angin perlu dilihat bersama untuk memahami mengapa kebakaran muncul dan berkembang di suatu wilayah.</p>
+              </div>
+            </article>
+            <article class="editorial-article">
+              <header class="article-heading">
+                <span class="article-number">Bab 3 Dari Mana Api Bermula</span>
+                <h3>Apa Hubungan Karhutla dengan Cuaca dan Iklim?</h3>
+              </header>
+              <div class="article-content">
+                <p>Cuaca kering bisa meningkatkan risiko karhutla karena vegetasi dan bahan organik di permukaan tanah kehilangan kelembapan. Periode tanpa hujan yang panjang, kelembapan rendah, dan angin dapat membuat api lebih mudah menyebar atau lebih sulit dikendalikan. Pengaruh fenomena iklim seperti El Niño dapat mengubah pola curah hujan di sejumlah wilayah, tetapi dampaknya tidak selalu sama di seluruh Indonesia dan tetap perlu dilihat berdasarkan kondisi setempat.</p>
+                <p>Ketika hutan dan lahan terbakar, karbon yang tersimpan dalam vegetasi dan tanah dapat dilepaskan ke atmosfer. Kebakaran juga menghasilkan asap dan partikel yang mencemari udara. Hubungan antara karhutla dan iklim berlangsung dua arah: kondisi iklim dapat memengaruhi risiko kebakaran, sedangkan emisi dari kebakaran turut menambah gas rumah kaca. Namun, kejadian karhutla tetap dipengaruhi banyak faktor, termasuk sumber api, penggunaan lahan, dan cara kawasan tersebut dikelola.</p>
+              </div>
+            </article>
+            <article class="editorial-article editorial-article--reverse">
+              <header class="article-heading">
+                <span class="article-number">Bab 4 Dampak yang Lebih Luas</span>
+                <h3>Bagaimana Nasib Hutan dan Satwa?</h3>
+              </header>
+              <div class="article-content">
+                <p>Dampak karhutla ternyata tidak berhenti pada manusia, karena hutan dan makhluk hidup di dalamnya ikut menanggungnya. Kebakaran bisa merusak vegetasi, menghilangkan tempat berlindung, dan mengurangi sumber makanan serta air bagi satwa liar. Hewan yang mampu menjauh dari api pun dapat kehilangan habitatnya dan kesulitan menemukan tempat hidup yang sesuai. Beberapa satwa mungkin berpindah ke wilayah permukiman atau kawasan lain untuk mencari makanan, sehingga risiko konflik dengan manusia dapat meningkat.</p>
+                <p>Besarnya dampak terhadap satwa bergantung pada lokasi, luas dan intensitas kebakaran, jenis habitat, serta kemampuan lingkungan untuk pulih. Hutan yang terbakar tidak selalu kembali ke kondisi semula dalam waktu singkat, terutama jika kebakaran terjadi berulang. Pemulihan perlu memperhatikan kondisi tanah, tumbuhan asli, sumber air, dan keterhubungan habitat agar satwa memiliki kesempatan untuk kembali hidup di lingkungan yang sesuai.</p>
+              </div>
+            </article>
+            <article class="editorial-article">
+              <header class="article-heading">
+                <span class="article-number">Bab 4 Dampak yang Lebih Luas</span>
+                <h3>Bagaimana Dampaknya bagi Kehidupan dan Ekonomi?</h3>
+              </header>
+              <div class="article-content">
+                <p>Karhutla bisa mengganggu kegiatan sehari-hari, mulai dari pekerjaan, sekolah, transportasi, hingga usaha masyarakat. Asap yang pekat bisa mengurangi jarak pandang dan membuat kegiatan di luar ruangan menjadi tidak nyaman atau berisiko. Masyarakat yang bergantung pada pertanian, perkebunan, hasil hutan, dan sumber daya alam juga dapat kehilangan pendapatan ketika lahan, tanaman, atau akses menuju tempat kerja mereka terdampak.</p>
+                <p>Kerugian tidak hanya berasal dari lahan dan tanaman yang rusak. Penanganan kebakaran, layanan kesehatan, perlindungan warga, gangguan kegiatan usaha, dan pemulihan lingkungan juga membutuhkan sumber daya. Dampaknya dapat berbeda antara satu daerah dan daerah lain, sehingga penilaian kerugian perlu mempertimbangkan kondisi masyarakat setempat serta dampak jangka pendek dan jangka panjang, bukan hanya menghitung area yang terbakar.</p>
+              </div>
+            </article>
+            <article class="editorial-article editorial-article--reverse">
+              <header class="article-heading">
+                <span class="article-number">Bab 5 Cara Kita Menyikapi</span>
+                <h3>Bagaimana Petugas Menangani Karhutla?</h3>
+              </header>
+              <div class="article-content">
+                <p>Setelah memahami apa yang terjadi, pertanyaan terakhirnya adalah apa yang bisa dilakukan oleh kita dan para petugas. Penanganan karhutla diawali dengan pemantauan dan penilaian kondisi, lalu dilanjutkan dengan langkah pencegahan, pemadaman, pengamanan wilayah, serta perlindungan masyarakat. Petugas perlu mempertimbangkan lokasi api, arah angin, jenis vegetasi, akses menuju lokasi, ketersediaan air, dan kemungkinan api menyebar. Metode penanganan dapat berbeda antara kebakaran permukaan, kawasan berhutan, dan lahan gambut karena karakteristik serta tantangan pemadamannya tidak sama.</p>
+                <p>Ketika kebakaran terkendali, pekerjaan belum tentu selesai. Petugas masih perlu memantau kemungkinan munculnya kembali api atau bara, terutama pada lokasi yang sulit dijangkau. Masyarakat terdampak juga mungkin membutuhkan informasi keselamatan, dukungan kesehatan, dan bantuan untuk menjalani aktivitas sehari-hari. Setelah keadaan lebih aman, evaluasi penyebab, pemulihan lingkungan, dan perbaikan langkah pencegahan membantu mengurangi risiko kejadian serupa.</p>
+              </div>
+            </article>
+            <article class="editorial-article">
+              <header class="article-heading">
+                <span class="article-number">Bab 5 Cara Kita Menyikapi</span>
+                <h3>Bagaimana Kita Bisa Mencegahnya?</h3>
+              </header>
+              <div class="article-content">
+                <p>Pencegahan karhutla perlu dilakukan sebelum api muncul, terutama ketika suatu wilayah memasuki periode kering. Pembukaan lahan sebaiknya tidak dilakukan dengan pembakaran yang tidak terkendali. Pengelolaan vegetasi dan lahan yang tepat, pemantauan daerah rawan, serta perhatian terhadap perubahan cuaca dapat membantu mengurangi kemungkinan api menyala dan menyebar. Pengelola lahan dan masyarakat juga perlu memastikan bahwa sumber api tidak ditinggalkan tanpa pengawasan.</p>
+                <p>Peran masyarakat penting dalam mengenali dan melaporkan indikasi kebakaran sejak awal. Jika terlihat asap atau api yang mencurigakan, sampaikan lokasi dengan jelas kepada petugas dan jangan mendekati wilayah berbahaya untuk memeriksa sendiri. Informasi dari masyarakat dapat membantu mempercepat pemeriksaan, sedangkan pemantauan dan kesiapan petugas membantu menentukan langkah penanganan. Pencegahan lebih efektif ketika masyarakat, pengelola lahan, dan pihak terkait saling berkoordinasi.</p>
+              </div>
+            </article>
+            <article class="editorial-article editorial-article--reverse">
+              <header class="article-heading">
+                <span class="article-number">Bab 5 Cara Kita Menyikapi</span>
+                <h3>Bagaimana Aturan dan Penegakan Hukum Berperan?</h3>
+              </header>
+              <div class="article-content">
+                <p>Pencegahan karhutla membutuhkan pengelolaan lahan yang bertanggung jawab, pengawasan wilayah rawan, kesiapan petugas, dan aturan yang diterapkan secara konsisten. Pembakaran yang tidak terkendali dapat menimbulkan risiko bagi lingkungan dan masyarakat. Karena itu, pencegahan tidak hanya bergantung pada tindakan ketika api sudah muncul, tetapi juga pada upaya mengurangi sumber penyulut dan memperbaiki pengelolaan lahan sebelum musim kering.</p>
+                <p>Ketika terjadi kebakaran, penyebab dan tanggung jawabnya perlu diperiksa berdasarkan bukti. Keberadaan hotspot atau lokasi kebakaran saja tidak otomatis membuktikan siapa yang menyebabkan kejadian tersebut. Penegakan hukum perlu memperhatikan hasil pemeriksaan dan aturan yang berlaku. Pengawasan, edukasi masyarakat, koordinasi antarpihak, serta tindak lanjut terhadap pelanggaran dapat saling mendukung untuk mengurangi risiko kebakaran berulang.</p>
+              </div>
+            </article>
+            <article class="editorial-article">
+              <header class="article-heading">
+                <span class="article-number">Bab 5 Cara Kita Menyikapi</span>
+                <h3>Bagaimana Pemulihan Setelah Api Padam?</h3>
+              </header>
+              <div class="article-content">
+                <p>Api yang sudah padam tidak berarti seluruh dampak karhutla ikut hilang. Tanah, vegetasi, habitat, sumber air, dan kegiatan masyarakat dapat membutuhkan waktu untuk pulih. Tingkat pemulihan bergantung pada seberapa berat kerusakan yang terjadi, jenis lingkungan yang terdampak, serta apakah kebakaran terjadi berulang. Kawasan yang kehilangan banyak vegetasi dapat lebih rentan terhadap erosi dan gangguan keseimbangan lingkungan sampai proses pemulihan berlangsung.</p>
+                <p>Upaya pemulihan perlu disesuaikan dengan karakteristik setiap lokasi, misalnya memulihkan vegetasi asli, menjaga sumber air, melindungi habitat, atau memperbaiki pengelolaan lahan. Pada lahan gambut, menjaga kondisi air dan mengurangi pengeringan penting untuk menurunkan kerentanan terhadap kebakaran berulang. Masyarakat terdampak juga dapat memerlukan dukungan untuk memulihkan mata pencaharian dan aktivitas sehari-hari. Pemulihan yang baik memperhatikan kebutuhan manusia sekaligus keberlanjutan lingkungan.</p>
+              </div>
+            </article>
+            <article class="editorial-article editorial-article--reverse">
+              <header class="article-heading">
+                <span class="article-number">Bab 5 Cara Kita Menyikapi</span>
+                <h3>Apa yang Bisa Kita Lakukan untuk Sesama?</h3>
+              </header>
+              <div class="article-content">
+                <p>Di balik peta dan angka karhutla ada masyarakat yang harus menjalani hidup di tengah asap, kehilangan akses terhadap lingkungan yang aman, atau menghadapi gangguan pada pekerjaan dan aktivitas sehari-hari. Ada pula petugas yang berupaya mengendalikan kebakaran dan melindungi warga. Memahami kondisi tersebut membantu kita melihat karhutla bukan hanya sebagai perubahan warna pada peta, melainkan peristiwa yang memengaruhi kehidupan manusia dan lingkungan.</p>
+                <p>Kepedulian dapat dimulai dengan memahami informasi secara utuh, tidak menyebarkan kabar yang belum terverifikasi, dan memperhatikan kebutuhan warga terdampak. Kita juga dapat mendukung upaya pencegahan, menjaga lingkungan, serta mengikuti arahan keselamatan ketika kualitas udara memburuk. Di tengah rasa syukur atas keselamatan yang kita rasakan, mendoakan dan menunjukkan kepedulian kepada saudara yang terdampak menjadi pengingat bahwa penanganan bencana membutuhkan perhatian dan tanggung jawab bersama.</p>
+              </div>
+            </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="./features/site-shell.js?v=9"></script>
+  <script src="../main/features/theme-toggle.js?v=9"></script>
+  <script src="./backend/map.js?v=9"></script>
+</body>
+</html>
